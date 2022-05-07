@@ -23,6 +23,14 @@ module.exports = {
     defineEmits: 'readonly',
     defineExpose: 'readonly',
     withDefault: 'readonly'
-  }
+  },
+  overrides: [
+    {
+      files: ['src/api/**/*.ts'],
+      rules: {
+        camelcase: 'off'
+      }
+    }
+  ]
 
 }

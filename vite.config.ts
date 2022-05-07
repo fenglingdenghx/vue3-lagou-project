@@ -9,7 +9,7 @@ export default defineConfig({
     vue(),
     eslintPlugin({
       // 配置选项
-      catch: false // 禁用 eslint 缓存
+      // catch: false // 禁用 eslint 缓存
     }),
     vueJsx({
       // 配置选项
@@ -18,6 +18,13 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.join(__dirname, 'src')
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "@/styles/variables.scss";'
+      }
     }
   }
 })
