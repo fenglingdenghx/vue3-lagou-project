@@ -1,9 +1,13 @@
 <template>
-  <h1>首页</h1>
+  <div>
+    classfy
+  </div>
 </template>
 
 <script lang="ts" setup>
+
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang='scss'>
+
 </style>

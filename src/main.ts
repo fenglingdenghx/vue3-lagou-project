@@ -1,8 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './router/index'
 import { store, key } from './store'
 import elementPlus from './plugins/element-plus'
+
 // 加载全局样式
 import './styles/index.scss'
 

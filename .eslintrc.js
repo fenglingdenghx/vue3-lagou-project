@@ -17,6 +17,7 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    'vue/multi-word-component-names': 'off'
   },
   globals: {
     defineProps: 'readonly',
