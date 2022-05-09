@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { store } from '@/store'
 import AppLayout from '../layout/app-layout.vue'
 // routes
 import productRoutes from './modules/product'
@@ -14,6 +15,9 @@ const routes:Array<RouteRecordRaw> = [
   {
     path: '/',
     component: AppLayout,
+    meta: {
+      requiresAuth: true
+    },
     children: [
       {
         path: '',
@@ -41,7 +45,13 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach(() => {
+router.beforeEach((to) => {
+  if (to.meta.requiresAuth && !store.state.user) {
+    return {
+      path: '/login',
+      query: { redirect: to.path }
+    }
+  }
   nprogress.start()
 })
 router.afterEach(() => {

@@ -1,8 +1,11 @@
 import { InjectionKey } from 'vue'
 import { createStore, useStore as baseUseStore, Store } from 'vuex'
-
+import type { IUserInfo } from '@/api/types/common'
+import { setItem, getItem } from '@/utils/storage'
+import { USER } from '@/utils/constants'
 const state = {
-  isCollapse: false
+  isCollapse: false,
+  user: getItem<{ token: string } & IUserInfo>(USER)
 }
 
 export type State = typeof state
@@ -15,6 +18,10 @@ export const store = createStore<State>({
   mutations: {
     setIsCollapse (state, payload) {
       state.isCollapse = payload
+    },
+    setUser (state, payload) {
+      state.user = payload
+      setItem(USER, state.user)
     }
   }
 })
