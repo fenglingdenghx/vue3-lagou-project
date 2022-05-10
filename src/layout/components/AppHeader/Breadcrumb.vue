@@ -21,7 +21,6 @@ const routes = computed(() => {
     return item.meta.title
   })
 })
-console.log(routes.value)
 </script>
 
 <style scoped lang='scss'>

@@ -59,7 +59,7 @@ request.interceptors.response.use(function (response) {
   // 其他情况
   ElMessage.error(response.data.msg || '请求失败请稍后重试')
   // 手动返回一个 Promise 异常
-  return Promise.reject(response.data)
+  return Promise.reject(response)
   // if (response.data.status && response.data.status !== 200) {
   //   ElMessage.error(response.data.msg || '请求失败请稍后重试')
   //   // 手动返回一个 Promise 异常
