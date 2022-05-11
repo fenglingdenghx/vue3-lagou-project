@@ -12,6 +12,7 @@ const app = createApp(App)
 app.use(router)
 app.use(store, key)
 app.use(elementPlus)
+// 接口文档密码 slzd
 
 // 自动注册全局组件
 const modules = import.meta.globEager('./components/**/index.ts')

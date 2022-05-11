@@ -30,10 +30,10 @@ request.interceptors.response.use(function (response) {
     // 正确的情况
     return response
   }
-
   // 错误情况
   // 统一处理登录过期
-  if (status === 41000) {
+  if (status === 410000) {
+    console.log(1)
     if (isRefreshing) return Promise.reject(response)
     isRefreshing = true
     ElMessageBox.confirm('您的登录状态已过期，你可以取消停留在此页面，或重新登录', '登录过期', {
