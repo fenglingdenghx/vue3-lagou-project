@@ -1,5 +1,5 @@
 import request from '../utils/request'
-import { IRoleParams, IRoleItem, Menu } from './types/role'
+import { IRoleParams, IRoleItem, Menu, IRoleBody, EditRoleInfo } from './types/role'
 // 列表
 export const getRoles = (params: IRoleParams) => {
   return request<{
@@ -33,5 +33,25 @@ export const getMenus = () => {
   }>({
     method: 'get',
     url: '/setting/role/create'
+  })
+}
+
+// 添加或修改role
+export const saveRole = (data:IRoleBody, id: number = 0) => {
+  return request({
+    method: 'post',
+    url: `/setting/role/${id}`,
+    data
+  })
+}
+
+// 获取角色信息
+export const getRoleInfo = (id: number) => {
+  return request<{
+    menus: Menu[]
+    role: EditRoleInfo
+  }>({
+    method: 'get',
+    url: `/setting/role/${id}/edit`
   })
 }

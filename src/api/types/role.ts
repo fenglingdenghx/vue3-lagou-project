@@ -20,3 +20,17 @@ export interface Menu {
   expand: boolean
   children?: Menu[]
 }
+
+export interface IRoleBody {
+  role_name: string
+  status: 0 | 1
+  checked_menus: number[]
+}
+
+export interface EditRoleInfo {
+  id: number
+  level: number
+  role_name: string
+  rules: string
+  status: 0 | 1
+}

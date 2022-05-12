@@ -131,6 +131,8 @@
   </page-container>
   <role-form
     v-model="formVisible"
+    v-model:role-id="roleId"
+    @success="handleSuccess"
   />
 </template>
 
@@ -153,6 +155,7 @@ const listCount = ref<number>(0)
 const list = ref<IRoleItem[]>([])
 const listLoading = ref<boolean>(false)
 const formVisible = ref<boolean>(false)
+const roleId = ref<number | null>(null)
 onMounted(() => {
   loadList()
 })
@@ -164,6 +167,10 @@ const loadList = async () => {
   list.value = res.list
   listCount.value = res.count
 }
+const handleSuccess = () => {
+  formVisible.value = false
+  loadList()
+}
 const handleQuery = () => {
   listParams.page = 1
   loadList()
@@ -173,7 +180,10 @@ const handleDelete = async (id: number) => {
   ElMessage.success('删除成功')
   loadList()
 }
-const handleUpdate = (id: number) => {}
+const handleUpdate = (id: number) => {
+  roleId.value = id
+  formVisible.value = true
+}
 const handleStatusChange = async (item: IRoleItem) => {
   await updateRoleStatus(item.id, item.status)
   ElMessage.success(`${item.status === 1 ? '启用' : '禁用'}成功`)
